@@ -1,10 +1,11 @@
 import signupSchema from "../modals/SignupUser.js";
 import generatePasswordHash from "../utility/utility.js";
-import jwt from 'jsonwebtoken'
 import bcrypt from "bcrypt"
 import generateToken from "../utility/tokenUtility.js";
+
 const Signup = async (req, res) => {
   const { name, email, password } = req.body;
+  
   const hashPassword = generatePasswordHash(password);
   const existingUser = await signupSchema.findOne({ email });
 
